@@ -10,13 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_10_072028) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_10_084947) do
   create_table "profiles", force: :cascade do |t|
     t.integer "user_id"
     t.text "body"
     t.text "history"
     t.text "contact_email"
     t.text "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tag_groups", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
