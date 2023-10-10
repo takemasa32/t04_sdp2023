@@ -9,8 +9,12 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
-
-ActiveRecord::Schema[7.0].define(version: 2023_10_10_082325) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_10_084314) do
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+  end
+  
   create_table "devises", force: :cascade do |t|
     t.text "email"
     t.text "encrypted_password"
