@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_10_072028) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_10_082325) do
+  create_table "devises", force: :cascade do |t|
+    t.text "email"
+    t.text "encrypted_password"
+    t.text "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.integer "user_id"
     t.text "body"
