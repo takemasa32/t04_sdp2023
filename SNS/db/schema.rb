@@ -9,6 +9,21 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
+ActiveRecord::Schema[7.0].define(version: 2023_10_10_084314) do
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+  end
+  
+  create_table "devises", force: :cascade do |t|
+    t.text "email"
+    t.text "encrypted_password"
+    t.text "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 ActiveRecord::Schema[7.0].define(version: 2023_10_10_082427) do
   create_table "posts", force: :cascade do |t|
@@ -27,6 +42,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_082427) do
     t.text "history"
     t.text "contact_email"
     t.text "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tag_groups", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
