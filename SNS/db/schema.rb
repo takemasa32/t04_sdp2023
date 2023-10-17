@@ -9,12 +9,8 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
-ActiveRecord::Schema[7.0].define(version: 2023_10_10_084314) do
-  create_table "likes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
-  end
-  
+
+ActiveRecord::Schema[7.0].define(version: 2023_10_17_092144) do
   create_table "devises", force: :cascade do |t|
     t.text "email"
     t.text "encrypted_password"
@@ -25,13 +21,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_084314) do
     t.datetime "updated_at", null: false
   end
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_10_082427) do
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.text "title"
     t.text "body"
     t.text "image"
     t.text "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts_tags", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,6 +57,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_082427) do
 
   create_table "tag_groups", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
