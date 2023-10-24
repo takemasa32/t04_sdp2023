@@ -1,4 +1,7 @@
 <h1>ユーザー情報</h1>
 
-<p>メールアドレス：<%= @user.email %></p>
-<p><%= link_to '登録解除', unsubscribe_path(@user), method: :delete, data: { confirm: '本当に登録解除しますか？' } %></p>
+<%# 以下を修正：ビューのリファクタリング① %>
+<p>メールアドレス：<%= current_user.email %></p>
+<p><%= link_to 'ログアウト', logout_path, method: :delete %></p>
+<%# 以下を修正：ビューのリファクタリング② %>
+<p><%= link_to '登録解除', unsubscribe_path, method: :delete, data: { confirm: '本当に登録解除しますか？' } %></p>

@@ -1,13 +1,16 @@
 class UsersController < ApplicationController
-     # 以下を追記
+    before_action :require_login, only: [:show, :destroy]
   def new
     @user = User.new
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      redirect_to profile_path(@user)
+    # 以下を修正：コントローラーのリファクタリング②
+    user = User.new(user_params)
+    if user.save
+    # 以下を追記：コントローラーのリファクタリング③
+      log_in(user)
+      redirect_to profile_path(user)
     else
       render 'new'
     end
@@ -19,7 +22,8 @@ class UsersController < ApplicationController
 
   def destroy
     user = User.find(params[:id])
-    user.destroy
+    # 以下を修正：コントローラーのリファクタリング④
+    current_user.destroy
     redirect_to signup_path
   end
 
