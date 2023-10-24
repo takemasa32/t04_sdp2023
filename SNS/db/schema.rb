@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_17_092144) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_24_062357) do
   create_table "devises", force: :cascade do |t|
     t.text "email"
     t.text "encrypted_password"
@@ -75,6 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_092144) do
     t.text "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
