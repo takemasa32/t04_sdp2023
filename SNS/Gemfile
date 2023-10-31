@@ -73,3 +73,8 @@ group :test do
   gem "selenium-webdriver"
 
 end
+
+# to use boostrap
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
+gem "tailwindcss-rails", "~> 2.0"

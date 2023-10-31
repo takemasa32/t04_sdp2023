@@ -3,5 +3,11 @@
 <%# 以下を修正：ビューのリファクタリング① %>
 <p>メールアドレス：<%= current_user.email %></p>
 <p><%= link_to 'ログアウト', logout_path, method: :delete %></p>
+
 <%# 以下を修正：ビューのリファクタリング② %>
 <p><%= link_to '登録解除', unsubscribe_path, method: :delete, data: { confirm: '本当に登録解除しますか？' } %></p>
+
+
+  <div class="text-center" style="margin-top: 20px; display: flex; justify-content: space-between;">
+    <%= link_to "投稿一覧", posts_path, class: "btn btn-primary" %>
+  </div>
