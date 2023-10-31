@@ -1,6 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @post %>
+<!--<%= render @post %>-->
+
+<p><%= @post.user_id %></p>
+<p><%= @post.title %></p>
+<p><%= @post.body %></p>
+<p><%=  "image_tag #{@post.image}"  %></p>
+
 
 <div>
   <%= link_to "Edit this post", edit_post_path(@post) %> |
