@@ -75,6 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_31_064820) do
     t.text "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "area"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

@@ -5,13 +5,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-<<<<<<< HEAD
     # 以下を追記
     get '/signup', to: 'users#new'
     post '/signup', to: 'users#create'
-    
-    # get '/users/:id', to: 'users#show', as: 'profile' # 予備
-    # delete '/users/:id', to: 'users#destroy', as: 'unsubscribe' # 予備
 
     # プロフィールページ
     get '/profile', to: 'users#show'
@@ -20,24 +16,7 @@ Rails.application.routes.draw do
     get '/login', to: 'sessions#new'
     post '/login', to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
-    
- 
- end
-=======
-  # 以下を追記
-  get '/signup', to: 'users#new'
-  post '/signup', to: 'users#create'
-  get '/users/:id', to: 'users#show', as: 'profile'
-  delete '/users/:id', to: 'users#destroy', as: 'unsubscribe'
-
-  get '/profile', to: 'users#show'
-  delete '/unsubscribe', to: 'users#destroy'
-
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
 
 # 画像ファイルにアクセスするためのルートを追加
   get '/images/:filename', to: 'images#show', as: 'image'
 end
->>>>>>> develop

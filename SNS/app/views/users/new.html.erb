@@ -1,7 +1,7 @@
 <h1>ユーザー登録</h1>
 
 <%= form_with model: @user, url: signup_path, local: true do |form| %>
-  <% if @user.present? && @user.errors.any? %>
+  <% if @user.errors.any? %>
     <strong><%= @user.errors.count %>個のエラーがあります。</strong>
     <ul>
       <% @user.errors.full_messages.each do |msg| %>
@@ -18,7 +18,7 @@
 
   <%= form.label :password_confirmation, 'パスワード(確認)' %>
   <%= form.password_field :password_confirmation %>
-  
+
     <%= form.label :name, 'ユーザー名' %>
   <%= form.text_field :name %><br>
 
@@ -27,7 +27,7 @@
   
   <%= form.radio_button :area, :east %>
   <%= form.label :area_east, "東部" %>
-  
+  <!--  
   <%= form.radio_button :area, :center %>
   <%= form.label :area_center, "中部" %>
   
@@ -36,6 +36,7 @@
   
   <%= form.radio_button :area, :out %>
   <%= form.label :area_out, "島根県外" %><br>
+  -->
 
   <%= form.submit '登録' %>
 <% end %>
