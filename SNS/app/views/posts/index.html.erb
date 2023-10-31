@@ -11,14 +11,13 @@
   <div id="posts">
       <%# @posts.each do |post| %>
   <% @role = 0  %> <!-- 0: する側, 1: される側 -->
-  
+
   <% @filtered_posts = @posts.where(role: @role) %>
   <% @filtered_posts.each do |post| %>
     <!-- 投稿一覧の要素を制限 -->
 
       <div class="card mb-1">
         <div class="card-body">
-          
           <div class="max-w-lg mx-auto">
               <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm">
                   <a href="#">
