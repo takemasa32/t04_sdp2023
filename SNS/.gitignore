@@ -39,3 +39,10 @@
 # Ignore SQLite database files
 /db/*.sqlite3
 /db/*.sqlite3-journal
+/db/development.sqlite3
+
+
+/Gemfile.lock
+
+#投稿したファイル
+/public/uploads
