@@ -10,14 +10,19 @@
     </ul>
   <% end %>
 
+  <div>
   <%= form.label :email, 'メールアドレス' %>
   <%= form.email_field :email %>
-
-  <%= form.label :password, 'パスワード' %>
+  </div>
+  <div>
+  <%= form.label :password, 'パスワード  ' %>
   <%= form.password_field :password %>
-
+  
+  <p>※パスワードは6文字以上にしてください．</p>
+  </div>
+  <div>
   <%= form.label :password_confirmation, 'パスワード(確認)' %>
   <%= form.password_field :password_confirmation %>
-
+  </div>
   <%= form.submit '登録' %>
 <% end %>
