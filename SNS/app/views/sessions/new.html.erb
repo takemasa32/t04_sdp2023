@@ -10,4 +10,8 @@
   <%= form.password_field :password %>
 
   <%= form.submit 'ログイン' %>
+
+  <div>
+  アカウントがない方は<%= link_to "こちら", signup_path %>へ
+  </div>
 <% end %>
