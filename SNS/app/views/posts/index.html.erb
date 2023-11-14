@@ -5,6 +5,11 @@
 <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
   <h1>投稿一覧</h1>
   <%= link_to "新規投稿", new_post_path, class: "btn btn-primary" %>
+
+  <%= link_to_if(current_user, "アカウント", profile_path(current_user), class: "btn btn-primary") do %>
+    <%= link_to "サインイン", new_post_path, class: "btn btn-primary" %>
+  <% end %>
+
 </div>
 
 
@@ -25,7 +30,7 @@
                         <img class="rounded-t-lg" src=<%= post.image  %> alt="">
                       -->
                       <img class="rounded-t-lg" src=<%= "https://flowbite.com/docs/images/blog/image-1.jpg"  %> alt="">
-                      
+
                   </a>
                   <div class="p-2">
                       <a href="#">
