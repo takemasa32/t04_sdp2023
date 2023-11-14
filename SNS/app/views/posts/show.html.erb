@@ -1,7 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
-
 <%= render @post %>
+
+<p><%= @post.user_id %></p>
+<p><%= @post.title %></p>
+<p><%= @post.body %></p>
+<p><%=  "image_tag #{@post.image}"  %></p>
 
 <div>
   <% if current_user.id == @post.user_id %>
