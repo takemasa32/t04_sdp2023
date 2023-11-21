@@ -36,9 +36,11 @@
     <%= form.text_area :body %>
   </div>
 
-  <div><!--ロールはリンクしたタイミングで決まっているのであとから触ります。-->
+         <!-- 0: する側, 1: される側 -->
+  <div>
     <%= form.label :role, style: "display: block" %>
-    <%= form.text_area :role %>
+    <%= form.radio_button :role, 0 %> する側
+    <%= form.radio_button :role, 1 %> される側
   </div>
 
 
