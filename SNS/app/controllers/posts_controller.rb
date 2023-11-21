@@ -58,6 +58,18 @@ class PostsController < ApplicationController
     end
   end
 
+  #　フィルター機能
+  def filter
+    @role = params[:id] ? params[:id].to_i : 0
+    @posts = Post.all
+    @filtered_posts = @posts.where(role: @role)
+    render 'index'
+  end
+
+  def set_role
+    @role = params[:id] ? params[:id].to_i : 0
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
