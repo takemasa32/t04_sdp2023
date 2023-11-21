@@ -1,3 +1,19 @@
+<head>
+  <style>
+    .selected {
+      background-color: gray;
+      color: white;
+      font-size: 20px;
+    }
+
+    .center {
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;  /* または他の任意の値 */
+    }
+  </style>
+</head>
+
 <p style="color: green"><%= notice %></p>
 
 <div class="container">
@@ -11,11 +27,16 @@
 
         <div id="posts">
             <%# @posts.each do |post| %>
-        <% @role = 0  %> <!-- 0: する側, 1: される側 -->
+         <!-- 0: する側, 1: される側 -->
 
         <% @filtered_posts = @posts.where(role: @role) %>
         <% @filtered_posts.each do |post| %>
           <!-- 投稿一覧の要素を制限 -->
+
+          <div class="center">
+            <%= link_to "する側", filter_posts_path(id: 0), class: "btn btn-secondary #{'selected' if @role == 0}" %>
+            <%= link_to "される側", filter_posts_path(id: 1), class: "btn btn-secondary #{'selected' if @role == 1}" %>
+          </div>
 
             <div class="card mb-1">
               <div class="card-body">
