@@ -4,10 +4,14 @@
   <%= flash[:danger] %>
 
   <%= form.label :email, 'メールアドレス' %>
-  <%= form.email_field :email %>
+  <%= form.email_field :email %><br>
 
   <%= form.label :password, 'パスワード' %>
-  <%= form.password_field :password %>
-
+  <%= form.password_field :password %><br>
+  
   <%= form.submit 'ログイン' %>
+
+  <div>
+  アカウントがない方は<%= link_to "こちら", signup_path %>へ
+  </div>
 <% end %>

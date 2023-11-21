@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-
+  # Postsに入る前にログインしているか確認する
+  before_action :require_login
   # GET /posts or /posts.json
   def index
     @posts = Post.all

@@ -10,14 +10,37 @@
     </ul>
   <% end %>
 
+  <div>
   <%= form.label :email, 'メールアドレス' %>
   <%= form.email_field :email %>
-
-  <%= form.label :password, 'パスワード' %>
+  </div>
+  <div>
+  <%= form.label :password, 'パスワード  ' %>
   <%= form.password_field :password %>
-
+  
+  <p>※パスワードは6文字以上にしてください．</p>
+  </div>
+  <div>
   <%= form.label :password_confirmation, 'パスワード(確認)' %>
   <%= form.password_field :password_confirmation %>
 
+    <%= form.label :name, 'ユーザー名' %>
+  <%= form.text_field :name %><br>
+
+  <%= form.label :image, 'ユーザー画像' %>
+  <%= form.file_field :image %><br>
+  
+  <%= form.radio_button :area, :east %>
+  <%= form.label :area_east, "東部" %>
+  
+  <%= form.radio_button :area, :center %>
+  <%= form.label :area_center, "中部" %>
+  
+  <%= form.radio_button :area, :west %>
+  <%= form.label :area_west, "西部" %>
+  
+  <%= form.radio_button :area, :out %>
+  <%= form.label :area_out, "島根県外" %><br>
+  </div>
   <%= form.submit '登録' %>
 <% end %>

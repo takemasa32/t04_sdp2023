@@ -84,4 +84,5 @@ config.hosts << "77b88be91b3e4cd9850bdd3e11b90d6a.vfs.cloud9.us-east-1.amazonaws
 config.hosts << "779a12ee5f8a4ff4ab2f86fd9022725b.vfs.cloud9.us-east-1.amazonaws.com"
 
 config.hosts << "aed5ce735f30462796a44ca928817334.vfs.cloud9.us-east-1.amazonaws.com"
+config.hosts << "552241f797ea4252ba12a1368fcb45d2.vfs.cloud9.us-east-1.amazonaws.com"
 end

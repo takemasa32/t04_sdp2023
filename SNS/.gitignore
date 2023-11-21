@@ -29,3 +29,20 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
+
+# Ignore uploaded files in development
+ /public/images/
+
+# Ignore SQLite database files
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/db/development.sqlite3
+
+
+/Gemfile.lock
+
+#投稿したファイル
+/public/uploads

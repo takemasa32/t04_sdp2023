@@ -10,11 +10,21 @@
       </ul>
     </div>
   <% end %>
+  
+  <div>
+    <%= form.label :image, style: "display: block" %>
+    <%= form.file_field :image %><!--画像保存用に変更した-->
+    <%= form.hidden_field :post_image_cache %>
+  
+  </div>
+  
 
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.number_field :user_id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
+
+
+
 
   <div>
     <%= form.label :title, style: "display: block" %>
@@ -25,13 +35,8 @@
     <%= form.label :body, style: "display: block" %>
     <%= form.text_area :body %>
   </div>
-
-  <div>
-    <%= form.label :image, style: "display: block" %>
-    <%= form.text_area :image %>
-  </div>
-
-  <div>
+  
+  <div><!--ロールはリンクしたタイミングで決まっているのであとから触ります。-->
     <%= form.label :role, style: "display: block" %>
     <%= form.text_area :role %>
   </div>
