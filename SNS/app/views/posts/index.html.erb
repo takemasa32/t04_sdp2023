@@ -6,10 +6,9 @@
   <% if current_user.present? %>
     <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
       <h1>投稿一覧</h1>
-        <%= link_to "アカウント", profile_path(current_user), class: "btn btn-primary" %>
         <%= link_to "新規投稿", new_post_path, class: "btn btn-primary" %>
       </div>
-        
+
         <div id="posts">
             <%# @posts.each do |post| %>
         <% @role = 0  %> <!-- 0: する側, 1: される側 -->
@@ -25,7 +24,7 @@
                         <a href="#">
 
                         <div style="height: 200px; overflow: hidden; display: flex; align-items: center;">
-                            <img class="rounded-t-lg object-cover" src="<%= post.image %>" alt="" style="width: 100%; object-position: center center;">
+                          <img class="rounded-t-lg object-cover" src="<%= post.image %>" alt="" style="width: 100%; object-position: center center; filter: blur(30px);">
                         </div>
 
                             <!--
