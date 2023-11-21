@@ -19,4 +19,4 @@ Rails.application.routes.draw do
 
 # 画像ファイルにアクセスするためのルートを追加
   get '/images/:filename', to: 'images#show', as: 'image'
-end
+end 
