@@ -28,15 +28,14 @@
         <div id="posts">
             <%# @posts.each do |post| %>
          <!-- 0: する側, 1: される側 -->
+        <div class="center">
+          <%= link_to "する側", filter_posts_path(id: 0), class: "btn btn-secondary #{'selected' if @role == 0}" %>
+          <%= link_to "される側", filter_posts_path(id: 1), class: "btn btn-secondary #{'selected' if @role == 1}" %>
+        </div>
 
         <% @filtered_posts = @posts.where(role: @role) %>
         <% @filtered_posts.each do |post| %>
           <!-- 投稿一覧の要素を制限 -->
-
-          <div class="center">
-            <%= link_to "する側", filter_posts_path(id: 0), class: "btn btn-secondary #{'selected' if @role == 0}" %>
-            <%= link_to "される側", filter_posts_path(id: 1), class: "btn btn-secondary #{'selected' if @role == 1}" %>
-          </div>
 
             <div class="card mb-1">
               <div class="card-body">
