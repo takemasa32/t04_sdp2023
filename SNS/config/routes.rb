@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   # 以下を追記
+  get '/', to: 'posts#index'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   get '/users/:id', to: 'users#show', as: 'profile'
