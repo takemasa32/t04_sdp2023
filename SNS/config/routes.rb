@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  resources :posts#, only: %i[new create show destroy]
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
 
+
+  get 'posts/r/:id', to: 'posts#filter', as: 'filter_posts'
+  get '/posts', to: redirect('/posts/r/0')
+  resources :posts#, only: %i[new create show destroy]
   # 以下を追記
   get '/', to: 'posts#index'
   get '/signup', to: 'users#new'
@@ -22,4 +26,4 @@ Rails.application.routes.draw do
 
 # 画像ファイルにアクセスするためのルートを追加
   get '/images/:filename', to: 'images#show', as: 'image'
-end 
+end
