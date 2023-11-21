@@ -12,13 +12,14 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show', as: 'profile'
   delete '/users/:id', to: 'users#destroy', as: 'unsubscribe'
 
-  get '/profile', to: 'users#show'
-  delete '/unsubscribe', to: 'users#destroy'
+    # プロフィールページ
+    get '/profile', to: 'users#show'
+    delete '/unsubscribe', to: 'users#destroy'
 
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+    get '/login', to: 'sessions#new'
+    post '/login', to: 'sessions#create'
+    delete '/logout', to: 'sessions#destroy'
 
 # 画像ファイルにアクセスするためのルートを追加
   get '/images/:filename', to: 'images#show', as: 'image'
-end
+end 

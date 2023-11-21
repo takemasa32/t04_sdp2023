@@ -18,17 +18,19 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
   end
 
   def destroy
+    user = User.find_by(id: params[:id])
+    user.destroy
     # 以下を修正：コントローラーのリファクタリング④
-    current_user.destroy
+  
     redirect_to signup_path
   end
 
   private
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :name, :image, :area)
     end
 end
