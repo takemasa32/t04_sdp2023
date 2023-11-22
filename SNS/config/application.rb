@@ -18,5 +18,10 @@ module SNS
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    
+    #ホストの制限の解除
+    class Application < Rails::Application
+      config.middleware.delete ActionDispatch::HostAuthorization
+    end
   end
 end

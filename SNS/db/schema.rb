@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_31_064820) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_21_092211) do
   create_table "devises", force: :cascade do |t|
     t.text "email"
     t.text "encrypted_password"
@@ -53,6 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_31_064820) do
     t.text "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "tag_groups", force: :cascade do |t|
@@ -79,4 +80,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_31_064820) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "profiles", "users"
 end
