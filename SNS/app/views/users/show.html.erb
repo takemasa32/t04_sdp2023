@@ -12,3 +12,12 @@
   <div class="text-center" style="margin-top: 20px; display: flex; justify-content: space-between;">
     <%= link_to "投稿一覧", posts_path, class: "btn btn-primary" %>
   </div>
+
+ <%# 以下，既にログインしている場合にはプロファイルの編集，していない場合には新規作成のリンクを表示するように修正 %>
+<div class="text-center" style="margin-top: 20px; display: flex; justify-content: space-between;">
+  <% if current_user && Profile.exists?(user_id: current_user.id) %>
+    <%= link_to "プロファイルの編集", profile_path(current_user.profile.id), class: "btn btn-primary" %>
+  <% elsif current_user %>
+    <%= link_to "プロファイルの新規作成", new_profile_path, class: "btn btn-primary" %>
+  <% end %>
+</div>

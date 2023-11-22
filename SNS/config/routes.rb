@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :profiles
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -13,11 +14,11 @@ Rails.application.routes.draw do
   get '/', to: 'posts#index'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
-  get '/users/:id', to: 'users#show', as: 'profile'
+  get '/users/:id', to: 'users#show', as: 'user_profile'
   delete '/users/:id', to: 'users#destroy', as: 'unsubscribe'
 
     # プロフィールページ
-    get '/profile', to: 'users#show'
+    get '/user_profile', to: 'users#show'
     delete '/unsubscribe', to: 'users#destroy'
 
     get '/login', to: 'sessions#new'
