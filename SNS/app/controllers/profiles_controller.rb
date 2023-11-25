@@ -9,6 +9,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1 or /profiles/1.json
   def show
+    @posts = Post.all
   end
 
   # GET /profiles/new
