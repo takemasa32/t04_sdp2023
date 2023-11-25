@@ -10,6 +10,13 @@ Rails.application.routes.draw do
   get 'posts/r/:id', to: 'posts#filter', as: 'filter_posts'
   get '/posts', to: redirect('/posts/r/0')
   resources :posts#, only: %i[new create show destroy]
+
+  resources :posts, only: [:index, :show, :edit, :create, :destroy, :update] do
+    resource :likes, only: [:create, :destroy]
+  end
+
+  resources :likes, only: [:index]
+
   # 以下を追記
   get '/', to: 'posts#index'
   get '/signup', to: 'users#new'

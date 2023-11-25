@@ -61,6 +61,9 @@
                                   <!-- <strong>投稿者:</strong> -->
                                       <%= post.user&.name || "Unknown User, ID: #{post.user_id}" %>
                                 </p>
+
+                                <!--いいねボタン-->
+                                <td><%= render "likes/btn", post: post %></td>
                         </div>
                     </div>
                 </div>
