@@ -1,32 +1,151 @@
-<div id="<%= dom_id profile %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= profile.user_id %>
-  </p>
+<div class="row py-5 px-4">
+    <div class="col-md-8 mx-auto">
+        <!-- Profile widget -->
+        <div class="bg-white shadow rounded overflow-hidden">
+            <div class="px-4 pt-0 pb-4 cover">
+                <div class="media align-items-end profile-head">
+                    <div class="profile mr-3">
+                        <img src="<%=profile.image%>" alt="..." width="130" class="rounded mb-2 mt-3 img-thumbnail">
+                        <% if current_user.id == @profile.user_id %>
+                            <%= link_to "Edit profile", edit_profile_path(@profile), class: "btn btn-outline-dark btn-sm btn-block" %>
+                         <% end %>
+                    </div>
+                    <div class="media-body text-black">
+                        <h4 class="mt-0 mb-0"><%=profile.user.name%></h4>
+                        <p class="small mb-4">
+                            <i class="fas fa-map-marker-alt mr-2"></i><%=profile.contact_email%>
+                        </p>
+                        <%= link_to "send mail", "mailto:#{@profile.contact_email}", class: "btn btn-outline-dark btn-sm btn-block" %>
+                    </div>
+                </div>
+            </div>
+<!--
+            <div class="bg-light p-4 d-flex justify-content-end text-center">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">215</h5>
+                        <small class="text-muted">
+                            <i class="fas fa-image mr-1"></i>Photos
+                        </small>
+                    </li>
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">745</h5>
+                        <small class="text-muted">
+                            <i class="fas fa-user mr-1"></i>Followers
+                        </small>
+                    </li>
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">340</h5>
+                        <small class="text-muted">
+                            <i class="fas fa-user mr-1"></i>Following
+                        </small>
+                    </li>
+                </ul>
+            </div>
+-->
+            <div class="px-4 py-3">
+                <h5 class="mb-0">About</h5>
+                <div class="p-4 rounded shadow-sm bg-light">
+                    <p class="font-italic mb-0"><%=profile.body%></p>
+                </div>
+            </div>
+            <div class="px-4 py-3">
+                <h5 class="mb-0">history</h5>
+                <div class="p-4 rounded shadow-sm bg-light">
+                    <p class="font-italic mb-0"><%=profile.history%></p>
+                </div>
+            </div>
+            <div class="py-4 px-4">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h5 class="mb-0">Recent photos</h5>
+                    <!--<a href="#" class="btn btn-link text-muted">Show all</a>-->
+                </div>
+                <div class="row">
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Body:</strong>
-    <%= profile.body %>
-  </p>
+                  <!--以下投稿-->
+                    <div id="posts">
+                      <%# @posts.each do |post| %>
+                        <!-- 0: する側, 1: される側 -->
+                      <h5 class="mb-0">する側</h5>
+                        <% @filtered_posts = @posts.where(role: 0, user_id: @profile.user_id) %>
+                        <% if @filtered_posts.empty? %>
+                          <p>まだ投稿されていません</p>
+                        <% else %>
+                          <% @filtered_posts.each do |post| %>
+                          <!-- 投稿一覧の要素を制限 -->
+                          <div class="card mb-1">
+                            <div class="card-body">
+                              <div class="max-w-lg mx-auto">
+                                <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm">
+                                  <a href="#">
+                                    <div style="height: 80px; overflow: hidden; display: flex; align-items: center;">
+                                      <img class="rounded-t-lg object-cover" src="<%= post.image %>" alt="" style="width: 100%; object-position: center center; filter: blur(30px);">
+                                    </div>
+                                  </a>
+                                  <div class="p-2">
+                                    <a href="#">
+                                      <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2">
+                                        <%= link_to post.title, post, class: "post-title-link" %>
+                                      </h5>
+                                    </a>
+                                    <p>
+                                      <!-- <strong>投稿者:</strong> -->
+                                      <%= post.user&.name || "Unknown User, ID: #{post.user_id}" %>
+                                    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">History:</strong>
-    <%= profile.history %>
-  </p>
+                                    <!-- いいねボタン -->
+                                    <td><%= render "likes/btn", post: post %></td>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        <% end %>
+                      <% end %>
+                    </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Contact email:</strong>
-    <%= profile.contact_email %>
-  </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Image:</strong>
-    <%= profile.image %>
-  </p>
 
-  <% if action_name != "show" %>
-    <%= link_to "プロフィールを表示", profile, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "プロフィールを編集", edit_profile_path(profile), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+                      <h5 class="mb-0">される側</h5>
+                        <% @filtered_posts = @posts.where(role: 1, user_id: @profile.user_id) %>
+                        <% if @filtered_posts.empty? %>
+                          <p>まだ投稿されていません</p>
+                        <% else %>
+                          <% @filtered_posts.each do |post| %>
+                          <!-- 投稿一覧の要素を制限 -->
+                          <div class="card mb-1">
+                            <div class="card-body">
+                              <div class="max-w-lg mx-auto">
+                                <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm">
+                                  <a href="#">
+                                    <div style="height: 80px; overflow: hidden; display: flex; align-items: center;">
+                                      <img class="rounded-t-lg object-cover" src="<%= post.image %>" alt="" style="width: 100%; object-position: center center; filter: blur(30px);">
+                                    </div>
+                                  </a>
+                                  <div class="p-2">
+                                    <a href="#">
+                                      <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2">
+                                        <%= link_to post.title, post, class: "post-title-link" %>
+                                      </h5>
+                                    </a>
+                                    <p>
+                                      <!-- <strong>投稿者:</strong> -->
+                                      <%= post.user&.name || "Unknown User, ID: #{post.user_id}" %>
+                                    </p>
+
+                                    <!-- いいねボタン -->
+                                    <td><%= render "likes/btn", post: post %></td>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        <% end %>
+                      <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
