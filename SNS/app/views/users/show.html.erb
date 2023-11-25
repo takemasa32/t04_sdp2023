@@ -11,6 +11,9 @@
 
   <div class="text-center" style="margin-top: 20px; display: flex; justify-content: space-between;">
     <%= link_to "投稿一覧", posts_path, class: "btn btn-primary" %>
+    <%= link_to likes_path, class: "btn btn-danger" do %>
+      <i class="fas fa-heart"></i> いいね👍一覧
+    <% end %>
   </div>
 
  <%# 以下，既にログインしている場合にはプロファイルの編集，していない場合には新規作成のリンクを表示するように修正 %>

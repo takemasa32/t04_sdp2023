@@ -11,33 +11,29 @@
     </div>
   <% end %>
 
+  <%= form.hidden_field :user_id, value: current_user.id %>
+
   <div class="my-5">
-  <div>
-    <%= form.hidden_field :user_id, value: current_user.id %>
-  </div>
+    <%= form.label "本文", class: "block font-medium text-sm text-gray-700" %>
+    <%= form.text_area :body, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", placeholder: "本文を入力してください" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :本文 %>
-    <%= form.text_area :body, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label "活動履歴", class: "block font-medium text-sm text-gray-700" %>
+    <%= form.text_area :history, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", placeholder: "活動履歴を入力してください" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :活動履歴 %>
-    <%= form.text_area :history, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label "連絡先メール", class: "block font-medium text-sm text-gray-700" %>
+    <%= form.text_area :contact_email, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", placeholder: "連絡先メールを入力してください" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :連絡先メール %>
-    <%= form.text_area :contact_email, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div>
-    <%= form.label :プロフィール画像, style: "display: block" %>
+    <%= form.label "プロフィール画像", class: "block font-medium text-sm text-gray-700" %>
     <%= form.file_field :image %><!--画像保存用に変更した-->
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class="mt-6">
+    <%= form.submit "プロフィールを保存", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>

@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     resource :likes, only: [:create, :destroy]
   end
 
+  resources :likes, only: [:index]
+
   # 以下を追記
   get '/', to: 'posts#index'
   get '/signup', to: 'users#new'

@@ -12,4 +12,10 @@ class LikesController < ApplicationController
         like.destroy
         redirect_to request.referer
     end
+
+    def index
+        @likes = current_user.likes
+        @likes_role_0 = current_user.likes.joins(:post).where(posts: { role: 0 })
+        @likes_role_1 = current_user.likes.joins(:post).where(posts: { role: 1 })
+    end
 end
