@@ -66,10 +66,11 @@
                     <div id="posts">
                       <%# @posts.each do |post| %>
                         <!-- 0: する側, 1: される側 -->
+                      <div>
                       <h5 class="mb-0">する側</h5>
                         <% @filtered_posts = @posts.where(role: 0, user_id: @profile.user_id) %>
                         <% if @filtered_posts.empty? %>
-                          <p>まだ投稿されていません</p>
+                          <p>[まだ投稿されていません]</p>
                         <% else %>
                           <% @filtered_posts.each do |post| %>
                           <!-- 投稿一覧の要素を制限 -->
@@ -103,13 +104,14 @@
                         <% end %>
                       <% end %>
                     </div>
+                    </div>
 
 
-
+                    <div>
                       <h5 class="mb-0">される側</h5>
                         <% @filtered_posts = @posts.where(role: 1, user_id: @profile.user_id) %>
                         <% if @filtered_posts.empty? %>
-                          <p>まだ投稿されていません</p>
+                          <p>[まだ投稿されていません]</p>
                         <% else %>
                           <% @filtered_posts.each do |post| %>
                           <!-- 投稿一覧の要素を制限 -->
@@ -142,6 +144,7 @@
                           </div>
                         <% end %>
                       <% end %>
+                      </div>
                     </div>
                 </div>
             </div>
