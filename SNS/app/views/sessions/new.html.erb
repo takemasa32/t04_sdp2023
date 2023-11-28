@@ -1,17 +1,69 @@
-<h1>ログイン</h1>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ログイン</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #F5DEB3;
+    }
+    h1 {
+      font-size: 2rem; /* 見出しの文字サイズを調整 */
+      text-align: center; /* 見出しを中央揃えに */
+      margin-bottom: 20px; /* 下部に余白を追加 */
+    }
+    form {
+      max-width: 400px; /* フォームの最大幅を指定 */
+      margin: 0 auto; /* フォームを中央揃えに */
+    }
+    label {
+      font-size: 1rem; /* ラベルの文字サイズを調整 */
+      margin-bottom: 5px; /* ラベルの下部に余白を追加 */
+      display: block; /* ラベルをブロック要素に変更 */
+    }
+    input {
+      width: 100%; /* 入力フィールドを親要素いっぱいに広げる */
+      padding: 8px; /* 入力フィールドの内側の余白を調整 */
+      margin-bottom: 10px; /* 入力フィールドの下部に余白を追加 */
+    }
+    .btn {
+      width: 100%; /* ボタンを広げる */
+    }
+    .signup-link {
+      text-align: center; /* リンクを中央揃えに */
+      margin-top: 10px; /* 上部に余白を追加 */
+    }
+  </style>
+</head>
+<body>
+  <h1>ログイン</h1>
 
-<%= form_with model: @session, local: true do |form| %>
-  <%= flash[:danger] %>
+  <%= form_with model: @session, local: true do |form| %>
+    <%= flash[:danger] %>
 
-  <%= form.label :email, 'メールアドレス' %>
-  <%= form.email_field :email %><br>
+    <div class="mb-3">
+      <%= form.label :email, 'メールアドレス' %>
+      <%= form.email_field :email, class: 'form-control' %>
+    </div>
 
-  <%= form.label :password, 'パスワード' %>
-  <%= form.password_field :password %><br>
-  
-  <%= form.submit 'ログイン' %>
+    <div class="mb-3">
+      <%= form.label :password, 'パスワード' %>
+      <%= form.password_field :password, class: 'form-control' %>
+    </div>
+    
+    <%= form.submit 'ログイン', class: 'btn btn-primary' %>
 
-  <div>
-  アカウントがない方は<%= link_to "こちら", signup_path %>へ
-  </div>
-<% end %>
+    <div class="signup-link">
+      アカウントがない方は<%= link_to "こちら", signup_path, class: 'text-primary' %>へ
+    </div>
+  <% end %>
+
+  <!-- Bootstrap JS (Optional) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

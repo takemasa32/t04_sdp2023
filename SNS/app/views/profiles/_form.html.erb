@@ -25,15 +25,17 @@
 
   <div class="my-5">
     <%= form.label "連絡先メール", class: "block font-medium text-sm text-gray-700" %>
-    <%= form.text_area :contact_email, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", placeholder: "連絡先メールを入力してください" %>
+    <%= form.text_area :contact_email, rows: 1, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", placeholder: "連絡先メールを入力してください" %>
   </div>
+
 
   <div class="my-5">
     <%= form.label "プロフィール画像", class: "block font-medium text-sm text-gray-700" %>
-    <%= form.file_field :image %><!--画像保存用に変更した-->
+    <%= form.file_field :image %> <!--画像保存用に変更した-->
+
   </div>
 
   <div class="mt-6">
-    <%= form.submit "プロフィールを保存", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit "プロフィールを保存", class: "btn btn-primary" %>
   </div>
 <% end %>

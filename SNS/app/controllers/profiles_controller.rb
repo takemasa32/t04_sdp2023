@@ -9,6 +9,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1 or /profiles/1.json
   def show
+    @posts = Post.all
   end
 
   # GET /profiles/new
@@ -61,7 +62,7 @@ class ProfilesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
-      @profile = Profile.find(params[:id])
+      @profile = Profile.find_by_id(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
