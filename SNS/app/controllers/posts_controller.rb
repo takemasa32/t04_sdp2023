@@ -96,6 +96,19 @@ class PostsController < ApplicationController
     @role = params[:id] ? params[:id].to_i : 0
   end
 
+  def search_tag
+    # 検索結果画面でもタグ一覧表示
+    @tag_list = Tag.all
+    # 検索されたタグを受け取る
+    @tag = Tag.find_by(id: params[:tag_id])
+    if @tag.nil?
+      flash[:notice] = "指定されたタグは存在しません"
+      redirect_to root_path and return
+    end
+    # 検索されたタグに紐づく投稿を表示
+    @posts = @tag.posts
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -106,23 +119,5 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:user_id, :title, :body, :image, :role)
     end
-
-  def search_tag
-    Rails.logger.debug "search_tag method started"
-    # 検索結果画面でもタグ一覧表示
-    @tag_list = Tag.all
-    # 検索されたタグを受け取る
-    Rails.logger.debug "params[:tag_id]: #{params[:tag_id]}"
-    @tag = Tag.find_by(id: params[:tag_id])
-    Rails.logger.debug "@tag: #{@tag.inspect}"
-    if @tag.nil?
-      flash[:notice] = "指定されたタグは存在しません"
-      redirect_to root_path and return
-    end
-    # 検索されたタグに紐づく投稿を表示
-    @posts = @tag.posts
-    Rails.logger.debug "search_tag method finished"
-  end
-
 
 end
