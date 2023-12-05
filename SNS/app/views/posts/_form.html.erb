@@ -12,34 +12,38 @@
   <% end %>
 
   <div>
-    <%= form.label :画像, style: "display: block" %>
-    <%= form.file_field :image %><!--画像保存用に変更した-->
-    <%= form.hidden_field :post_image_cache %>
-  </div>
-
-  <div>
     <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
 
 
+   <hr>
 
 
   <div>
-    <%= form.label :タイトル, style: "display: block" %>
+    <%= form.label :タイトル, style: "display: block; font-size: 25px;" %>
     <%= form.text_area :title %>
   </div>
 
+
   <div>
-    <%= form.label :本文, style: "display: block" %>
+    <%= form.label :本文, style: "display: block; font-size: 25px;" %>
     <%= form.text_area :body %>
   </div>
 
          <!-- 0: する側, 1: される側 -->
   <div>
-    <%= form.label :role, style: "display: block" %>
+    <%= form.label :Role, style: "display: block; font-size: 25px;" %>
     <%= form.radio_button :role, 0 %> する側
     <%= form.radio_button :role, 1 %> される側
   </div>
+  
+   <div>
+    <%= form.label :画像, style: "display: block; font-size: 25px;"  %>
+    <%= form.file_field :image %><!--画像保存用に変更した-->
+    <%= form.hidden_field :post_image_cache %>
+  </div>
+  
+  <hr>
 
   <div>
 	<!-- ここを追加-->
@@ -48,6 +52,6 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <button type="submit" class="btn btn-primary">新規投稿</button>
   </div>
 <% end %>
