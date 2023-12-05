@@ -7,15 +7,18 @@
 
         <div class="card-body">
           <%= render @post %>
+
+            <!-- タグリスト -->
+            <p>タグ：
+              <% @posts_tags.each do |tag| %>
+                <span><i class="fa-sharp fa-solid fa-tag"></i>
+                  <%= link_to tag.name, search_tag_path(tag_id: tag.id) %></span>
+              <% end %>
+            </p>
         </div>
 
         <div class="card-footer">
           <% if current_user.id == @post.user_id %>
-            <!-- タグリスト -->
-            <% @posts_tags.each do |tag| %>
-            <i class="fa-sharp fa-solid fa-tag"></i>
-              <%= link_to tag.name,search_tag_path(tag_id: tag.id) %>
-            <% end %>
             <div class="text-center" style="margin-top:18px;">
               <div class="btn-group" role="group">
                 <%= button_to "投稿を削除する", @post, method: :delete, class: "btn btn-secondary mr-2" %>
