@@ -107,6 +107,9 @@ class PostsController < ApplicationController
     end
     # 検索されたタグに紐づく投稿を表示
     @posts = @tag.posts
+
+    @tags_role_0 = Post.joins(:tags).where(role: '0', tags: { id: @tag.id })
+    @tags_role_1 = Post.joins(:tags).where(role: '1', tags: { id: @tag.id })
   end
 
   private
