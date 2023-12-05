@@ -10,13 +10,12 @@
       </ul>
     </div>
   <% end %>
-  
+
   <div>
     <%= form.label :画像, style: "display: block" %>
     <%= form.file_field :image %><!--画像保存用に変更した-->
     <%= form.hidden_field :post_image_cache %>
   </div>
-  
 
   <div>
     <%= form.hidden_field :user_id, value: current_user.id %>
@@ -42,6 +41,11 @@
     <%= form.radio_button :role, 1 %> される側
   </div>
 
+  <div>
+	<!-- ここを追加-->
+    <label>タグ (,で区切ると複数タグ登録できます)</label>
+    <%= form.text_field :name,value: @tag_list, class: 'form-control' %>
+  </div>
 
   <div>
     <%= form.submit %>
