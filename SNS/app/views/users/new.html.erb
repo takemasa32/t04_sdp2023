@@ -49,12 +49,20 @@
       border-radius: 5px;
       padding: 0px;
     }
+    
+    img{
+      width: 80px;
+      margin: auto;
+      display: block;
+    }
+    
   </style>
 </head>
 <body>
   <div id="registration-form">
-    <h1>Suporiku</h1>
-
+    
+      <img src="assets/handshake.PNG" alt="握手のロゴ">
+      
     <%= form_with model: @user, url: signup_path, local: true do |form| %>
       <% if @user.errors.any? %>
         <strong><%= @user.errors.count %>個のエラーがあります。</strong>
