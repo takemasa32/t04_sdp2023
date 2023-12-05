@@ -37,11 +37,15 @@
     <%= form.radio_button :role, 1 %> される側
   </div>
   
-   <div>
-    <%= form.label :画像, style: "display: block; font-size: 25px;"  %>
-    <%= form.file_field :image %><!--画像保存用に変更した-->
+  <div class="custom-file-upload" >
+    <%= form.label :画像, style: "display: block; font-size: 25px;" %>
+    <label for="image-upload" style="border: 2px solid #333; padding: 15px;">
+      <i class="fas fa-cloud-upload-alt"></i> アップロード
+    </label>
+    <%= form.file_field :image, id: "image-upload", style: "display: none;" %>
     <%= form.hidden_field :post_image_cache %>
   </div>
+
   
   <hr>
 
