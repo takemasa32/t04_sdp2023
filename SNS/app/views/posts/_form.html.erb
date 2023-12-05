@@ -10,7 +10,6 @@
       </ul>
     </div>
   <% end %>
-  
 
   <div>
     <%= form.hidden_field :user_id, value: current_user.id %>
@@ -24,8 +23,8 @@
     <%= form.label :タイトル, style: "display: block; font-size: 25px;" %>
     <%= form.text_area :title %>
   </div>
-  
-  
+
+
   <div>
     <%= form.label :本文, style: "display: block; font-size: 25px;" %>
     <%= form.text_area :body %>
@@ -46,6 +45,11 @@
   
   <hr>
 
+  <div>
+	<!-- ここを追加-->
+    <label>タグ (,で区切ると複数タグ登録できます)</label>
+    <%= form.text_field :name,value: @tag_list, class: 'form-control' %>
+  </div>
 
   <div>
     <button type="submit" class="btn btn-primary">新規投稿</button>
