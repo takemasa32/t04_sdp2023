@@ -27,11 +27,18 @@
   </div>
          <!-- 0: する側, 1: される側 -->
   <div>
-    <%= form.label :role, style: "display: block" %>
+    <%= form.label :Role, style: "display: block; font-size: 25px;" %>
     <%= form.radio_button :role, 0 %> する側
     <%= form.radio_button :role, 1 %> される側
   </div>
+
   <div>
-    <%= form.submit %>
+	<!-- ここを追加-->
+    <label>タグ (,で区切ると複数タグ登録できます)</label>
+    <%= form.text_field :name,value: @tag_list, class: 'form-control' %>
+  </div>
+
+  <div>
+    <button type="submit" class="btn btn-primary">新規投稿</button>
   </div>
 <% end %>

@@ -1,6 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Title</title>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+    body{
+      color:#8a2be2;
+    }
+    
+    .main_coller{
+      color:#8a2be2;
+      font-family: 'Sacramento', cursive;
+      font-size: 35px;
+      margin-left: 10px;
+    }
+    
+    .nav-link{
+      color:#8a2be2;
+    }
+  </style>
+</head>
+
+<body>
+
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
   <div class="container">
-    <%= link_to "スポリク", posts_path, class: "navbar-brand" %>
+      <%= link_to "Suporiku", posts_path, class: "main_coller" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -25,3 +52,6 @@
     </div>
   </div>
 </nav>
+
+</body>
+</html>

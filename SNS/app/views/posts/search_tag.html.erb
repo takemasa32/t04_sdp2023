@@ -1,4 +1,4 @@
-<head>
+  <head>
   <style>
     .selected {
       background-color: gray;
@@ -18,15 +18,22 @@
 
 <div class="container">
 
-<h1>いいね一覧</h1>
+  <h1>タグが<%=@tag.name%>の投稿一覧</h1>
+
+  <!--タグリスト-->
+  <% @tag_list.each do |list|%>
+    <i class="fa-sharp fa-solid fa-tag"></i>
+    <%=link_to list.name, search_tag_path(tag_id: list.id) %>
+    <%= "(#{list.posts.count})" %>
+  <% end %>
  <!-- 0: する側, 1: される側 -->
 <div>
   <div>
     <h2>する側</h2>
-    <% if @likes_role_0.empty? %>
+    <% if @tags_role_0.empty? %>
       <p>該当する投稿がありません</p>
     <% else %>
-      <% @likes_role_0.each do |like| %>
+      <% @tags_role_0.each do |tag| %>
 
         <div class="card mb-1">
           <div class="card-body">
@@ -35,22 +42,22 @@
                 <a href="#">
 
                   <div style="height: 100px; overflow: hidden; display: flex; align-items: center;">
-                    <img class="rounded-t-lg object-cover" src="<%= like.post.image %>" alt="" style="width: 100%; object-position: center center; filter: blur(0px);">
+                    <img class="rounded-t-lg object-cover" src="<%= tag.image %>" alt="" style="width: 100%; object-position: center center; filter: blur(0px);">
                   </div>
                 </a>
                 <div class="p-2">
                   <a href="#">
                       <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2">
-                            <%= link_to like.post.title, like.post, class: "post-title-link" %>
+                            <%= link_to tag.title, tag, class: "post-title-link" %>
                       </h5>
                   </a>
 
                   <p>
                     <!-- <strong>投稿者:</strong> -->
-                        <%= like.post.user&.name || "Unknown User, ID: #{post.user_id}" %>
+                        <%= tag.user&.name || "Unknown User, ID: #{tag.user_id}" %>
                   </p>
                   <!--いいねボタン-->
-                  <td><%= render "likes/btn", post: like.post %></td>
+                  <td><%= render "likes/btn", post: tag %></td>
 
                 </div>
               </div>
@@ -63,10 +70,10 @@
 
   <div>
     <h2>される側</h2>
-    <% if @likes_role_1.empty? %>
+    <% if @tags_role_1.empty? %>
       <p>該当する投稿がありません</p>
     <% else %>
-      <% @likes_role_1.each do |like| %>
+      <% @tags_role_1.each do |tag| %>
 
         <div class="card mb-1">
           <div class="card-body">
@@ -75,22 +82,22 @@
                 <a href="#">
 
                   <div style="height: 100px; overflow: hidden; display: flex; align-items: center;">
-                    <img class="rounded-t-lg object-cover" src="<%= like.post.image %>" alt="" style="width: 100%; object-position: center center; filter: blur(0px);">
+                    <img class="rounded-t-lg object-cover" src="<%= tag.image %>" alt="" style="width: 100%; object-position: center center; filter: blur(0px);">
                   </div>
                 </a>
                 <div class="p-2">
                   <a href="#">
                       <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2">
-                            <%= link_to like.post.title, like.post, class: "post-title-link" %>
+                            <%= link_to tag.title, tag, class: "post-title-link" %>
                       </h5>
                   </a>
 
                   <p>
                     <!-- <strong>投稿者:</strong> -->
-                        <%= like.post.user&.name || "Unknown User, ID: #{post.user_id}" %>
+                        <%= tag.user&.name || "Unknown User, ID: #{post.user_id}" %>
                   </p>
                   <!--いいねボタン-->
-                  <td><%= render "likes/btn", post: like.post %></td>
+                  <td><%= render "likes/btn", post: tag %></td>
 
                 </div>
               </div>
