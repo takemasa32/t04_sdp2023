@@ -10,20 +10,20 @@
     </div>
   <% end %>
   <div>
+    <%= form.hidden_field :user_id, value: current_user.id %>
     <%= form.label :Image, style: "display: block" %>
     <%= form.file_field :image %><!--画像保存用に変更した-->
     <%= form.hidden_field :post_image_cache %>
   </div>
   <div>
-    <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
   <div class="mb-3">
     <%= form.label :title, class: "form-label" %>
-    <%= form.text_area :contact_email, rows: 1, class: "form-control", placeholder: "タイトルを入力してください" %>
+    <%= form.text_area :title, rows: 1, class: "form-control", placeholder: "タイトルを入力してください" %>
   </div>
   <div class="mb-3">
     <%= form.label 'what did you do', class: "form-label" %>
-    <%= form.text_area :contact_email, rows: 1, class: "form-control", placeholder: "活動を入力してください" %>
+    <%= form.text_area :body, rows: 1, class: "form-control", placeholder: "活動を入力してください" %>
   </div>
          <!-- 0: する側, 1: される側 -->
   <div>
