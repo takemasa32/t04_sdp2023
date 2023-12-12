@@ -2,7 +2,6 @@
   <% if post.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,44 +9,28 @@
       </ul>
     </div>
   <% end %>
-
+  <div>
+    <%= form.label :Image, style: "display: block" %>
+    <%= form.file_field :image %><!--画像保存用に変更した-->
+    <%= form.hidden_field :post_image_cache %>
+  </div>
   <div>
     <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
-
-
-   <hr>
-
-
-  <div>
-    <%= form.label :タイトル, style: "display: block; font-size: 25px;" %>
-    <%= form.text_area :title %>
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_area :contact_email, rows: 1, class: "form-control", placeholder: "タイトルを入力してください" %>
   </div>
-
-
-  <div>
-    <%= form.label :本文, style: "display: block; font-size: 25px;" %>
-    <%= form.text_area :body %>
+  <div class="mb-3">
+    <%= form.label 'what did you do', class: "form-label" %>
+    <%= form.text_area :contact_email, rows: 1, class: "form-control", placeholder: "活動を入力してください" %>
   </div>
-
          <!-- 0: する側, 1: される側 -->
   <div>
     <%= form.label :Role, style: "display: block; font-size: 25px;" %>
     <%= form.radio_button :role, 0 %> する側
     <%= form.radio_button :role, 1 %> される側
   </div>
-  
-  <div class="custom-file-upload" >
-    <%= form.label :画像, style: "display: block; font-size: 25px;" %>
-    <label for="image-upload" style="border: 2px solid #333; padding: 15px;">
-      <i class="fas fa-cloud-upload-alt"></i> アップロード
-    </label>
-    <%= form.file_field :image, id: "image-upload", style: "display: none;" %>
-    <%= form.hidden_field :post_image_cache %>
-  </div>
-
-  
-  <hr>
 
   <div>
 	<!-- ここを追加-->

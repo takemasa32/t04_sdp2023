@@ -1,26 +1,32 @@
 <h1>ユーザー情報</h1>
-
 <%# 以下を修正：ビューのリファクタリング① %>
-<p>アカウント名：<%= current_user.name %></p>
-<p>メールアドレス：<%= current_user.email %></p>
-<p><%= link_to 'ログアウト', logout_path, method: :delete %></p>
-
-<%# 以下を修正：ビューのリファクタリング② %>
-<p><%= link_to '登録解除', unsubscribe_path, method: :delete, data: { confirm: '本当に登録解除しますか？' } %></p>
-
-
-  <div class="text-center" style="margin-top: 20px; display: flex; justify-content: space-between;">
-    <%= link_to "投稿一覧", posts_path, class: "btn btn-primary" %>
-    <%= link_to likes_path, class: "btn btn-danger" do %>
-      <i class="fas fa-heart"></i> いいね👍一覧
+<p>account name：<%= current_user.name %></p>
+<p>e-mail：<%= current_user.email %></p>
+<style>
+  /* 特定のリンクの文字色を赤色に設定する例 */
+  .delete-account-link {
+    color: red;
+  }
+</style>
+<p><%= link_to 'Logout', logout_path, method: :delete %></p>
+<p><%= link_to 'Delete your account', unsubscribe_path, method: :delete, data: { confirm: '本当にアカウントを削除しますか？' }, class: 'delete-account-link' %></p>
+  <div class="text-center" style="margin-top: 20px; display: flex; justify-content: space-between; flex-direction: column;">
+    <%= link_to "Post list", posts_path, class: "btn btn-outline-dark btn-sm btn-block" %>
+    <%= link_to likes_path, class: "btn btn-sm btn-block custom-btn-purple" do %>
+      <i class="fas fa-heart"></i> good👍list
+    <% end %>
+    <%# 以下，既にログインしている場合にはプロファイルの編集，していない場合には新規作成のリンクを表示するように修正 %>
+    <% if current_user && Profile.exists?(user_id: current_user.id) %>
+      <%= link_to "Profile", profile_path(current_user.profile.id), class: "btn btn-outline-dark btn-sm btn-block" %>
     <% end %>
   </div>
-
- <%# 以下，既にログインしている場合にはプロファイルの編集，していない場合には新規作成のリンクを表示するように修正 %>
-<div class="text-center" style="margin-top: 20px; display: flex; justify-content: space-between;">
-  <% if current_user && Profile.exists?(user_id: current_user.id) %>
-    <%= link_to "プロファイルの表示", profile_path(current_user.profile.id), class: "btn btn-primary" %>
-  <% elsif current_user %>
-    <%= link_to "プロファイルの新規作成", new_profile_path, class: "btn btn-primary" %>
-  <% end %>
-</div>
+  <style>
+  .custom-btn-purple {
+    color: #800080; /* 紫色の文字色 */
+    background-color: #FFFFFF; /* 白色の背景色 */
+    border: 1px solid #800080; /* 紫色の枠線 */
+  }
+  .custom-btn-purple:hover {
+    background-color: #F0F0F0; /* ホバー時の背景色（適宜調整） */
+  }
+  </style>
