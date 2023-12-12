@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.custom-file-upload {
+  /* ここにスタイルを追加 */
+  border: 1px solid #ccc;
+  padding: 100px;
+  background-color: #dc78f5;
+  /* 他のスタイルを追加 */
+}
 /*
 
 @layer components {

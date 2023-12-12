@@ -1,65 +1,103 @@
-<body style="background: #f5deb3; font-size: 12px; font-family: ">
-  <div style="margin: 50px">
-    <h1>ユーザー登録</h1>
-  </div>
-  
-  <%= form_with model: @user, url: signup_path, local: true do |form| %>
-    <% if @user.errors.any? %>
-      <strong><%= @user.errors.count %>個のエラーがあります。</strong>
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    <% end %>
-  
-    <div>
-      <div style="margin: 15px">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+    
+    body {
+      background: white;
+      font-size: 12px;
+      font-family: sans-serif; /* Use an appropriate font-family */
+    }
+
+    #registration-form {
+      max-width: 250px;
+      margin: 50px auto;
+    }
+
+    #registration-form h1 {
+      text-align: center;
+      font-family: 'Sacramento', cursive;
+    }
+
+    #registration-form label {
+      display: block;
+      margin: 15px 0;
+    }
+
+    #registration-form input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    #registration-form p {
+      margin-top: 0px;
+      margin-bottom: 15px;
+      font-size: 10px;
+      color: #888;
+    }
+
+    #registration-form div.submit-button {
+      text-align: center;
+      font-size: 15px;
+      margin-top: 60px;
+      background: #1E90FF;
+      color: white;
+      border-radius: 5px;
+      padding: 0px;
+    }
+    
+    img{
+      width: 80px;
+      margin: auto;
+      display: block;
+    }
+    
+  </style>
+</head>
+<body>
+  <div id="registration-form">
+    
+      <img src="assets/handshake.PNG" alt="握手のロゴ">
+      
+    <%= form_with model: @user, url: signup_path, local: true do |form| %>
+      <% if @user.errors.any? %>
+        <strong><%= @user.errors.count %>個のエラーがあります。</strong>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <div>
         <%= form.label :email, 'メールアドレス' %>
         <%= form.email_field :email %>
       </div>
-      
-      <div style="margin: 15px">
-        <%= form.label :password, 'パスワード  ' %>
+
+      <div>
+        <%= form.label :password, 'パスワード' %>
         <%= form.password_field :password %>
-        
         <p>※パスワードは6文字以上にしてください．</p>
       </div>
-      
-      <div style="margin: 15px">
+
+      <div>
         <%= form.label :password_confirmation, 'パスワード(確認)' %>
         <%= form.password_field :password_confirmation %>
       </div>
-      
-      <div style="margin: 15px">
+
+      <div>
         <%= form.label :name, 'ユーザー名' %>
         <%= form.text_field :name %>
       </div>
-      
-      <div style="margin: 15px">
-        <%= form.label :image, 'ユーザー画像' %>
-        <%= form.file_field :image %>
-      </div>
-      
-      <div style="font-size: 15px; text-align: center; margin: 15px">
-        <%= form.radio_button :area, :east %>
-        <%= form.label :area_east, "東部" %>
-        
-        <%= form.radio_button :area, :center %>
-        <%= form.label :area_center, "中部" %>
-        
-        <%= form.radio_button :area, :west %>
-        <%= form.label :area_west, "西部" %>
-        
-        <%= form.radio_button :area, :out %>
-        <%= form.label :area_out, "島根県外" %>
-      </div>
-      
-      <div style="text-align: center; font-size: 25px; margin-top: 30px; background: #cd853f; margin-left: 100px; margin-right: 100px; color: white; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px">
+
+      <div class="submit-button">
         <%= form.submit '登録' %>
       </div>
-      
-    </div>
-      
-  <% end %>
+    <% end %>
+  </div>
 </body>
+</html>
