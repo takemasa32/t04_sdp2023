@@ -12,8 +12,8 @@
 <p><%= link_to 'Delete your account', unsubscribe_path, method: :delete, data: { confirm: '本当にアカウントを削除しますか？' }, class: 'delete-account-link' %></p>
   <div class="text-center" style="margin-top: 20px; display: flex; justify-content: space-between; flex-direction: column;">
     <%= link_to "Post list", posts_path, class: "btn btn-outline-dark btn-sm btn-block" %>
-    <%= link_to likes_path, class: "btn btn-sm btn-block custom-btn-purple" do %>
-      <i class="fas fa-heart"></i> good👍list
+    <%= link_to likes_path, class: "btn btn-outline-dark btn-sm btn-block custom-btn-purple" do %>
+      <i class="fas fa-heart"></i> Good👍list
     <% end %>
     <%# 以下，既にログインしている場合にはプロファイルの編集，していない場合には新規作成のリンクを表示するように修正 %>
     <% if current_user && Profile.exists?(user_id: current_user.id) %>
@@ -27,6 +27,6 @@
     border: 1px solid #800080; /* 紫色の枠線 */
   }
   .custom-btn-purple:hover {
-    background-color: #F0F0F0; /* ホバー時の背景色（適宜調整） */
+    background-color: #800080; /* ホバー時の背景色（適宜調整） */
   }
   </style>

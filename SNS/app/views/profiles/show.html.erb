@@ -14,11 +14,11 @@
 
         <% if current_user.id == @profile.user_id %>
           <div class="ml-2">
-            <%= link_to "edit profile", edit_profile_path(@profile), class: "btn btn-outline-dark btn-sm btn-block" %>
+            <%= link_to "Edit profile", edit_profile_path(@profile), class: "btn btn-outline-dark btn-sm btn-block" %>
           </div>
 
           <div class="ml-2">
-            <%= button_to "delete profile", profile_path(@profile), method: :delete, class: "btn btn-outline-danger btn-sm btn-block" %>
+            <%= button_to "Delete profile", profile_path(@profile), method: :delete, class: "btn btn-outline-danger btn-sm btn-block" %>
           </div>
         <% end %>
       </div>
