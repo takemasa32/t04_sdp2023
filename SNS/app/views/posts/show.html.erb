@@ -1,18 +1,38 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header" style="background-color: #8a2be2; color: white;">
+        </div>
 
-<%= render @post %>
+        <div class="card-body">
+          <%= render @post %>
 
+            <!-- タグリスト -->
+            <p>タグ：
+              <% @posts_tags.each do |tag| %>
+                <span><i class="fa-sharp fa-solid fa-tag"></i>
+                  <%= link_to tag.name, search_tag_path(tag_id: tag.id) %></span>
+              <% end %>
+            </p>
+        </div>
 
-<div>
-  <% if current_user.id == @post.user_id %>
-    <div class="text-center" style="margin-top: 20px; display: flex; justify-content: space-between;">
-      <%= link_to "投稿一覧へ戻る", filter_posts_path(@post.role), class: "btn btn-primary" %><!--現在表示したPostのロールに従った一覧に戻るようにする-->
-      <%= link_to "投稿を編集する", edit_post_path(@post), class: "btn btn-primary" %>
-      <%= button_to "投稿を削除する", @post, method: :delete, class: "btn btn-secondary" %>
+        <div class="card-footer">
+          <% if current_user.id == @post.user_id %>
+            <div class="text-center" style="margin-top:18px;">
+              <div class="btn-group" role="group">
+                <%= button_to "投稿を削除する", @post, method: :delete, class: "btn btn-secondary mr-2" %>
+                <%= link_to "投稿を編集する", edit_post_path(@post), class: "btn btn-primary mr-2" %>
+              </div>
+              <div style="margin-top: 10px;">
+                <%= link_to "投稿一覧へ戻る", filter_posts_path(@post.role), class: "btn btn-link" %>
+              </div>
+            </div>
+          <% else %>
+            <!-- Add any content for users who don't own the post -->
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% else %>
-
-  <% end %>
-
-
+  </div>
 </div>

@@ -30,8 +30,12 @@ Rails.application.routes.draw do
 
     get '/login', to: 'sessions#new'
     post '/login', to: 'sessions#create'
+    get '/logout', to: 'sessions#destroy'
     delete '/logout', to: 'sessions#destroy'
 
 # 画像ファイルにアクセスするためのルートを追加
   get '/images/:filename', to: 'images#show', as: 'image'
+
+# タグの検索で使用する
+  get "search_tag" => "posts#search_tag"
 end

@@ -25,3 +25,6 @@ Things you may want to cover:
 
 いいねの参考
 https://zenn.dev/ganmo3/articles/c071ba9aecaa51
+
+実行
+ngrok http 3000
