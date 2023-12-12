@@ -29,7 +29,7 @@
          <!-- 0: する側, 1: される側 -->
        
         
-      <div class="max-w-sm" style=" border: rgb(0, 0, 0) solid 1px; font-size: 100%; padding: 10px;">
+      <div class="max-w-sm" style=" border: rgb(0, 0, 0) solid 1px; font-size: 100%; ">
         <div class="center" style=" display: flex flex-direction: row; align-items: flex-start; flex-wrap: nowrap;">
           <%= link_to "する側", filter_posts_path(id: 0), class: "btn btn-secondary #{'selected' if @role == 0}" %>
           <%= link_to "される側", filter_posts_path(id: 1), class: "btn btn-secondary #{'selected' if @role == 1}" %>
