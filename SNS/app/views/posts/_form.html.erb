@@ -35,10 +35,10 @@
   <div>
 	<!-- ここを追加-->
     <label>タグ (,で区切ると複数タグ登録できます)</label>
-    <%= form.text_field :name,value: @tag_list, class: 'form-control' %>
+    <%= form.text_field :name,value: @tag_list, class: 'form-control' %><br>
   </div>
 
   <div>
-    <button type="submit" class="btn btn-primary">新規投稿</button>
+    <button type="submit" class="btn btn-outline-primary btn-sm btn-block custom-btn">Create post</button>
   </div>
 <% end %>
