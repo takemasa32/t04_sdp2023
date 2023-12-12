@@ -23,8 +23,8 @@
     <%= form.text_area :contact_email, rows: 1, class: "form-control", placeholder: "連絡先メールを入力してください" %>
   </div>
   <div class="mb-3">
-    <%= form.label "image", class: "form-label" %><br>
-    <%= form.file_field :image, class: "#" %> <!--画像保存用に変更した-->
+    <%= form.label "プロフィール画像", class: "form-label" %>
+    <%= form.file_field :image, class: "form-control" %> <!--画像保存用に変更した-->
   </div>
-  <button type="submit" class="btn btn-outline-primary btn-sm btn-block">save</button>
+  <button type="submit" class="btn btn-outline-primary btn-sm btn-block">save profile</button>
 <% end %>

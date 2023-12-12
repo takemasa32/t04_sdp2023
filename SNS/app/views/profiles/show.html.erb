@@ -7,16 +7,22 @@
       <p>プロフィールが存在しません.</p>
       <p>プロフィールを <%= link_to "こちら", new_profile_path %>から作成してください．</p>
     <% else %>
-      <%= render @profile %>
       <div class="d-flex justify-content-center ml-2">
         <div class="ml-2">
           <%= link_to "posts list", posts_path, class: "btn btn-outline-dark btn-sm btn-block" %>
         </div>
+
         <% if current_user.id == @profile.user_id %>
-          <%= link_to "edit profile", edit_profile_path(@profile), class: "btn btn-outline-dark btn-sm btn-block" %>
-          <%= button_to "delete profile", profile_path(@profile), method: :delete, class: "btn btn-outline-danger btn-sm btn-block" %>
+          <div class="ml-2">
+            <%= link_to "edit profile", edit_profile_path(@profile), class: "btn btn-outline-dark btn-sm btn-block" %>
+          </div>
+
+          <div class="ml-2">
+            <%= button_to "delete profile", profile_path(@profile), method: :delete, class: "btn btn-outline-danger btn-sm btn-block" %>
+          </div>
         <% end %>
       </div>
+      <%= render @profile %>
     <% end %>
   </div>
 </div>
