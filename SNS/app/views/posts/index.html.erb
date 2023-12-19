@@ -1,13 +1,15 @@
 <head>
   <style>
-    .selected {
-      background-color: gray;
-      color: white;
-    }
+.selected {
+  background-color: #4a4a4a; /* darker gray */
+  color: #ffffff;
+  border: 2px solid #ffffff; /* white border */
+  box-shadow: 0 0 10px #ffffff; /* white shadow */
+}
     .center {
       margin-left: auto;
       margin-right: auto;
-      width: 50%;  /* または他の任意の値 */
+      width: 80%;  /* または他の任意の値 */
     }
   </style>
 </head>
@@ -23,7 +25,7 @@
           <!-- 0: する側, 1: される側 -->
       <div class="max-w-sm center" style=" border: rgb(0, 0, 0) solid 1px; font-size: 100%; ">
         <div class="center" style=" display: flex flex-direction: row; align-items: flex-start; flex-wrap: nowrap;">
-          <%= link_to "する側", filter_posts_path(id: 0), class: "btn btn-secondary #{'selected' if @role == 0}" %>
+          <%= link_to "す る 側", filter_posts_path(id: 0), class: "btn btn-secondary #{'selected' if @role == 0}" %>
           <%= link_to "される側", filter_posts_path(id: 1), class: "btn btn-secondary #{'selected' if @role == 1}" %>
         </div>
       </div>
