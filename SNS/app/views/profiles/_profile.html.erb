@@ -6,16 +6,16 @@
                 <div class="media align-items-end profile-head">
                     <div class="profile mr-3">
                         <img src="<%=profile.image%>" alt="..." width="130" class="rounded mb-2 mt-3 img-thumbnail">
-                        <% if current_user.id == @profile.user_id %>
-                            <%= link_to "Edit profile", edit_profile_path(@profile), class: "btn btn-outline-dark btn-sm btn-block" %>
-                         <% end %>
+                          <% if current_user.id == profile.user_id %>
+                            <%= link_to "Edit profile", edit_profile_path(profile), class: "btn btn-outline-dark btn-sm btn-block" %>
+                          <% end %>
                     </div>
                     <div class="media-body text-black">
                         <h4 class="mt-0 mb-0"><%=profile.user.name%></h4>
                         <p class="small mb-4">
                             <i class="fas fa-map-marker-alt mr-2"></i><%=profile.contact_email%>
                         </p>
-                        <%= link_to "send mail", "mailto:#{@profile.contact_email}", class: "btn btn-outline-dark btn-sm btn-block" %>
+                        <%= link_to "send mail", "mailto:#{profile.contact_email}", class: "btn btn-outline-dark btn-sm btn-block" %>
                     </div>
                 </div>
             </div>
@@ -67,8 +67,8 @@
                       <%# @posts.each do |post| %>
                         <!-- 0: する側, 1: される側 -->
                       <div>
-                      <h5 class="mb-0">する側</h5>
-                        <% @filtered_posts = @posts.where(role: 0, user_id: @profile.user_id) %>
+                        <h5 class="mb-0">する側</h5>
+                        <% @filtered_posts = @posts.where(role: 0, user_id: profile.user_id) %>
                         <% if @filtered_posts.empty? %>
                           <p>[まだ投稿されていません]</p>
                         <% else %>
@@ -108,8 +108,8 @@
 
 
                     <div>
-                      <h5 class="mb-0">される側</h5>
-                        <% @filtered_posts = @posts.where(role: 1, user_id: @profile.user_id) %>
+                        <h5 class="mb-0">される側</h5>
+                        <% @filtered_posts = @posts.where(role: 1, user_id: profile.user_id) %>
                         <% if @filtered_posts.empty? %>
                           <p>[まだ投稿されていません]</p>
                         <% else %>
