@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
-    
+
     body {
       background: white;
       font-size: 12px;
@@ -58,11 +58,15 @@
     
   </style>
 </head>
+
+
+
 <body>
   <div id="registration-form">
-    
-      <img src="assets/Logo.PNG" alt="握手のロゴ">
-      
+      <a class="flex items-center  text-2xl font-semibold text-gray-900 dark:text-white">
+          <%= image_tag("Logo.png", alt: "Sponser Hubのロゴ", class: "w-8 h-8") %>
+          ユーザー登録
+      </a>
     <%= form_with model: @user, url: signup_path, local: true do |form| %>
       <% if @user.errors.any? %>
         <strong><%= @user.errors.count %>個のエラーがあります。</strong>
