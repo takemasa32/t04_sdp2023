@@ -28,3 +28,7 @@ https://zenn.dev/ganmo3/articles/c071ba9aecaa51
 
 実行
 ngrok http 3000
+
+
+http://ec2-44-218-168-112.compute-1.amazonaws.com/markers
+ ec2-44-218-168-112.compute-1.amazonaws.com
